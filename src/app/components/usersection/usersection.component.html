@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Users</h1>
+    <div class="row my-4">
+        <div class="col-9">
+            <input type="text" id= "searchbar" class="form-control">
+        </div>
+        <div class="col-3">
+            <button class="btn btn-dark" (click)="searchfor()">search</button>
+        </div>
+    </div>
+    <div class="row">
+        @for(user of usersList ; track user){
+        @if(Searchvalue === user.email || Searchvalue === "")
+        {
+        <div class ="col-4 my-2">
+            <div class="card" style="width: 18rem;">
+                <img src= {{user.image}} class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{user.username}}   <i class="bi bi-star-fill" [ngStyle]="{'color': user.is_verified ? 'green' : 'red'}"></i></h5>
+                  <p class="card-text">{{user.email}}</p>
+                  <p class="card-text">{{user.phone}}</p>
+                </div>
+              </div>
+        </div>}
+    }@empty
+    {
+        <p>List is empty</p>
+    }
+    </div>
+</div>
